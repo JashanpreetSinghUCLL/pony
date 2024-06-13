@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS animals;
+
+CREATE TABLE animals (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    age INT NOT NULL,
+    PRIMARY KEY (id)
+);
