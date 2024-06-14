@@ -5,6 +5,8 @@ import com.UCLLBackEnd.pony.repository.AnimalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AnimalService {
 
@@ -22,5 +24,26 @@ public class AnimalService {
         }
 
         return animalRepository.save(animal);
+    }
+
+    public List<Animal> getAllAnimals() {
+        return animalRepository.findAll();
+    }
+
+    public List<Animal> getAllAnimalsOlderThan(int age) {
+
+        if (age < 0) {
+            throw new ServiceException("ServiceException", "Age cannot be negative");
+        }
+
+        if (age < 1 || age > 50) {
+            throw new ServiceException("ServiceException", "Age must be between 1 and 50");
+        }
+
+        return animalRepository.findByAgeGreaterThan(age);
+    }
+
+    public Animal getOldestAnimal() {
+        return animalRepository.findOldestAnimals();
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -26,8 +27,23 @@ public class AnimalRestController {
     }
 
     @PostMapping
-    public Animal PostAnimal(@Valid @RequestBody Animal animal) {
+    public Animal postAnimal(@Valid @RequestBody Animal animal) {
         return animalService.addAnimal(animal);
+    }
+
+    @GetMapping
+    public List<Animal> getAllAnimals() {
+        return animalService.getAllAnimals();
+    }
+
+    @GetMapping("/age/{age}")
+    public List<Animal> getAnimalsOlderThan(@PathVariable int age) {
+        return animalService.getAllAnimalsOlderThan(age);
+    }
+
+    @GetMapping("/age/oldest")
+    public Animal getOldestAnimal() {
+        return animalService.getOldestAnimal();
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
