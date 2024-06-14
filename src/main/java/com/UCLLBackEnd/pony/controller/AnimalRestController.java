@@ -2,8 +2,10 @@ package com.UCLLBackEnd.pony.controller;
 
 import com.UCLLBackEnd.pony.model.Animal;
 import com.UCLLBackEnd.pony.model.DomainException;
+import com.UCLLBackEnd.pony.model.Stable;
 import com.UCLLBackEnd.pony.service.AnimalService;
 import com.UCLLBackEnd.pony.service.ServiceException;
+import com.UCLLBackEnd.pony.service.StableService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,9 +23,12 @@ public class AnimalRestController {
 
     private AnimalService animalService;
 
+    private StableService stableService;
+
     @Autowired
-    public AnimalRestController(AnimalService animalService) {
+    public AnimalRestController(AnimalService animalService, StableService stableService) {
         this.animalService = animalService;
+        this.stableService = stableService;
     }
 
     @PostMapping
@@ -45,6 +50,17 @@ public class AnimalRestController {
     public Animal getOldestAnimal() {
         return animalService.getOldestAnimal();
     }
+
+    @PostMapping("/{animalName}/stable")
+    public Stable addNewStableAnimal(@PathVariable String animalName, @Valid @RequestBody Stable stable) {
+        return stableService.assignAnimalToNewStable(animalName, stable);
+    }
+
+    @PostMapping("/{animalName}")
+    public Stable addExistingStableToAnimal(@PathVariable String animalName, @RequestParam Long stableId) {
+        return stableService.assignAnimalToExistingStable(animalName, stableId);
+    }
+
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(DomainException.class)

@@ -21,6 +21,10 @@ public class Animal {
     @Max(value = 50, message = "Maximum age is 50")
     private int age;
 
+    @ManyToOne
+    @JoinColumn(name="stable_id")
+    private Stable stable;
+
     public Animal(String name, int age) {
         this.name = name;
         this.age = age;
@@ -48,5 +52,13 @@ public class Animal {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public Stable getStable() {
+        return stable;
+    }
+
+    public void setStable(Stable stable) {
+        this.stable = stable;
     }
 }

@@ -1,6 +1,7 @@
 package com.UCLLBackEnd.pony.repository;
 
 import com.UCLLBackEnd.pony.model.Animal;
+import com.UCLLBackEnd.pony.model.Stable;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,14 +14,30 @@ public class DbInitializer {
 
     private AnimalRepository animalRepository;
 
+    private StableRepository stableRepository;
+
     @Autowired
-    public DbInitializer(AnimalRepository animalRepository) {
+    public DbInitializer(AnimalRepository animalRepository, StableRepository stableRepository) {
         this.animalRepository = animalRepository;
+        this.stableRepository = stableRepository;
     }
 
     @PostConstruct
     public void init() {
+        addStables();
         addAnimals();
+    }
+
+    private void addStables() {
+
+        List<Stable> stables = new ArrayList<>(
+                List.of(
+                        new Stable("StblHn", 5),
+                        new Stable("PonyCo", 3)
+                )
+        );
+
+        stableRepository.saveAll(stables);
     }
 
     private void addAnimals() {
@@ -33,6 +50,11 @@ public class DbInitializer {
                         new Animal("Little", 1)
                 )
         );
+
+        List<Stable> stables = stableRepository.findAll();
+
+        animals.get(1).setStable(stables.getFirst());
+        animals.get(2).setStable(stables.getLast());
 
         animalRepository.saveAll(animals);
     }
