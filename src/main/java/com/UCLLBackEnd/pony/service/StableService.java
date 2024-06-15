@@ -7,7 +7,9 @@ import com.UCLLBackEnd.pony.repository.StableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class StableService {
@@ -39,8 +41,8 @@ public class StableService {
         }
 
         stableRepository.save(stable);
-
         animal.setStable(stable);
+        stable.setAnimals(new HashSet<>(Set.of(animal)));
         animalRepository.save(animal);
         return stableRepository.save(stable);
     }
@@ -65,5 +67,22 @@ public class StableService {
         animal.setStable(stable);
         animalRepository.save(animal);
         return stableRepository.save(stable);
+    }
+
+    public List<Stable> getAllStablesWithAnimalsSleepingInThem() {
+
+        return stableRepository
+                .findAll()
+                .stream()
+                .filter(s -> !s.getAnimals().isEmpty())
+                .toList();
+    }
+
+    public Stable getStableOfAnimal(String animalName) {
+
+        Animal animal = animalRepository.findByName(animalName)
+                .orElseThrow(() -> new ServiceException("ServiceException", "The given animal doesn't exists"));
+
+        return animal.getStable();
     }
 }

@@ -1,9 +1,12 @@
 package com.UCLLBackEnd.pony.model;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.PositiveOrZero;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "stables")
@@ -18,6 +21,10 @@ public class Stable {
 
     @PositiveOrZero(message = "Max number of animals should be 0 or more")
     private int max_number_of_animals;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "stable")
+    private Set<Animal> animals;
 
     public Stable(String name, int max_number_of_animals) {
         this.name = name;
@@ -50,5 +57,13 @@ public class Stable {
 
     public void setMax_number_of_animals(int max_number_of_animals) {
         this.max_number_of_animals = max_number_of_animals;
+    }
+
+    public Set<Animal> getAnimals() {
+        return animals;
+    }
+
+    public void setAnimals(Set<Animal> animals) {
+        this.animals = animals;
     }
 }

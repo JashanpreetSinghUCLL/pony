@@ -61,6 +61,16 @@ public class AnimalRestController {
         return stableService.assignAnimalToExistingStable(animalName, stableId);
     }
 
+    @GetMapping("/stablesWithAnimals")
+    public List<Stable> getAllStablesWithAnimalsSleepingInThem() {
+        return stableService.getAllStablesWithAnimalsSleepingInThem();
+    }
+
+    @GetMapping("/{animalName}/stable")
+    public Stable getStableOfAnimal(@PathVariable String animalName) {
+        return stableService.getStableOfAnimal(animalName);
+    }
+
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(DomainException.class)

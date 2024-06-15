@@ -1,5 +1,6 @@
 package com.UCLLBackEnd.pony.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -21,6 +22,7 @@ public class Animal {
     @Max(value = 50, message = "Maximum age is 50")
     private int age;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name="stable_id")
     private Stable stable;
