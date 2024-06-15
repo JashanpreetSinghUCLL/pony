@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.UCLLBackEnd.pony.model.AnimalTest" time="0.018" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.UCLLBackEnd.pony.service.AddressServiceTest" time="0.346" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -64,8 +64,10 @@
     <property name="java.class.version" value="65.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[pony] "/>
   </properties>
-  <testcase name="givenOverAge_whenCreateAnimal_thenThrowsException" classname="com.UCLLBackEnd.pony.model.AnimalTest" time="0.007"/>
-  <testcase name="givenUnderAge_whenCreateAnimal_thenThrowsException" classname="com.UCLLBackEnd.pony.model.AnimalTest" time="0.001"/>
-  <testcase name="givenValidAnimal_whenCreateAnimal_thenAnimalIsCreated" classname="com.UCLLBackEnd.pony.model.AnimalTest" time="0.0"/>
-  <testcase name="givenNoName_whenCreateAnimal_thenThrowsException" classname="com.UCLLBackEnd.pony.model.AnimalTest" time="0.0"/>
+  <testcase name="givenAddress_whenAddAddress_thenAddressIsAdded" classname="com.UCLLBackEnd.pony.service.AddressServiceTest" time="0.222"/>
+  <testcase name="givenStableIdWithAlreadyAssignedAddress_whenAddStableToAddress_thenExceptionIsThrown" classname="com.UCLLBackEnd.pony.service.AddressServiceTest" time="0.03"/>
+  <testcase name="getAddressesOfStableWithMoreThan3Animals_thenAddressesAreReturned" classname="com.UCLLBackEnd.pony.service.AddressServiceTest" time="0.018"/>
+  <testcase name="givenStable_whenAddNewStableToNewAddress_thenStableWithAddressIsAdded" classname="com.UCLLBackEnd.pony.service.AddressServiceTest" time="0.011"/>
+  <testcase name="givenNonExistingStableId_whenAddStableToAddress_thenExceptionIsThrown" classname="com.UCLLBackEnd.pony.service.AddressServiceTest" time="0.009"/>
+  <testcase name="givenStableIdAndAddressID_whenAddStableToAddress_thenStableToAddressIsAdded" classname="com.UCLLBackEnd.pony.service.AddressServiceTest" time="0.01"/>
 </testsuite>

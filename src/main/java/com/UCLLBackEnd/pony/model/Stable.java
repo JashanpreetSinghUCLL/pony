@@ -26,6 +26,10 @@ public class Stable {
     @OneToMany(mappedBy = "stable")
     private Set<Animal> animals;
 
+    @OneToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
+
     public Stable(String name, int max_number_of_animals) {
         this.name = name;
         this.max_number_of_animals = max_number_of_animals;
@@ -65,5 +69,24 @@ public class Stable {
 
     public void setAnimals(Set<Animal> animals) {
         this.animals = animals;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "Stable{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", max_number_of_animals=" + max_number_of_animals +
+                ", animals=" + animals +
+                ", address=" + address +
+                '}';
     }
 }

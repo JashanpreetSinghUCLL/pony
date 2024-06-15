@@ -1,5 +1,7 @@
 /Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/test/java/com/UCLLBackEnd/pony/PonyApplicationTests.java
+/Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/test/java/com/UCLLBackEnd/pony/model/AddressTest.java
 /Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/test/java/com/UCLLBackEnd/pony/model/AnimalTest.java
 /Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/test/java/com/UCLLBackEnd/pony/model/StableTest.java
+/Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/test/java/com/UCLLBackEnd/pony/service/AddressServiceTest.java
 /Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/test/java/com/UCLLBackEnd/pony/service/AnimalServiceTest.java
 /Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/test/java/com/UCLLBackEnd/pony/service/StableServiceTest.java
