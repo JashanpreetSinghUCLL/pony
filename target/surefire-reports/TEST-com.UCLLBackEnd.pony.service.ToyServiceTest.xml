@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.UCLLBackEnd.pony.model.StableTest" time="0.052" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.UCLLBackEnd.pony.service.ToyServiceTest" time="0.319" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -64,7 +64,10 @@
     <property name="java.class.version" value="65.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[pony] "/>
   </properties>
-  <testcase name="givenInvalidAge_whenCreatingStable_thenThrowsException" classname="com.UCLLBackEnd.pony.model.StableTest" time="0.025"/>
-  <testcase name="givenNoName_whenCreatingStable_thenThrowsException" classname="com.UCLLBackEnd.pony.model.StableTest" time="0.001"/>
-  <testcase name="givenValidStable_whenCreatingStable_thenStableIsCreated" classname="com.UCLLBackEnd.pony.model.StableTest" time="0.001"/>
+  <testcase name="givenNonExistingToyId_whenAddAnimalToToy_thenExceptionIsThrown" classname="com.UCLLBackEnd.pony.service.ToyServiceTest" time="0.268"/>
+  <testcase name="givenValidAnimalIdAndToyId_whenAddAnimalToToy_thenAnimalIsAddedToToy" classname="com.UCLLBackEnd.pony.service.ToyServiceTest" time="0.011"/>
+  <testcase name="givenNonExistingAnimalId_whenAddAnimalToToy_thenExceptionIsThrown" classname="com.UCLLBackEnd.pony.service.ToyServiceTest" time="0.01"/>
+  <testcase name="whenAddToy_thenToyIsAdded" classname="com.UCLLBackEnd.pony.service.ToyServiceTest" time="0.004"/>
+  <testcase name="givenNonExistingToyName_whenGetToyWithSpecificName_thenExceptionIsThrown" classname="com.UCLLBackEnd.pony.service.ToyServiceTest" time="0.005"/>
+  <testcase name="givenValidToyName_whenGetToyWithSpecificName_thenToyWithSpecificNameIsReturned" classname="com.UCLLBackEnd.pony.service.ToyServiceTest" time="0.003"/>
 </testsuite>

@@ -3,9 +3,11 @@ package com.UCLLBackEnd.pony.controller;
 import com.UCLLBackEnd.pony.model.Animal;
 import com.UCLLBackEnd.pony.model.DomainException;
 import com.UCLLBackEnd.pony.model.Stable;
+import com.UCLLBackEnd.pony.model.Toy;
 import com.UCLLBackEnd.pony.service.AnimalService;
 import com.UCLLBackEnd.pony.service.ServiceException;
 import com.UCLLBackEnd.pony.service.StableService;
+import com.UCLLBackEnd.pony.service.ToyService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,14 +23,16 @@ import java.util.Map;
 @RequestMapping("/animals")
 public class AnimalRestController {
 
+    private ToyService toyService;
     private AnimalService animalService;
 
     private StableService stableService;
 
     @Autowired
-    public AnimalRestController(AnimalService animalService, StableService stableService) {
+    public AnimalRestController(AnimalService animalService, StableService stableService, ToyService toyService) {
         this.animalService = animalService;
         this.stableService = stableService;
+        this.toyService = toyService;
     }
 
     @PostMapping
@@ -70,6 +74,22 @@ public class AnimalRestController {
     public Stable getStableOfAnimal(@PathVariable String animalName) {
         return stableService.getStableOfAnimal(animalName);
     }
+
+    @PostMapping("/toys")
+    public Toy addNewToyAnimal(@Valid @RequestBody Toy toy) {
+        return toyService.addToy(toy);
+    }
+
+    @PostMapping("/{animalId}/{toyId}")
+    public Toy addAnimalToToy(@PathVariable Long animalId, @PathVariable Long toyId) {
+        return toyService.addAnimalToToy(animalId, toyId);
+    }
+
+    @GetMapping("/toys/{toyName}")
+    public Toy getToyWithSpecificName(@PathVariable String toyName) {
+        return toyService.getToyWithSpecificName(toyName);
+    }
+
 
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)

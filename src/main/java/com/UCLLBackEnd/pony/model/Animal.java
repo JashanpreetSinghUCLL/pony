@@ -1,10 +1,13 @@
 package com.UCLLBackEnd.pony.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
+
+import java.util.Set;
 
 @Entity
 @Table(name="animals")
@@ -27,6 +30,14 @@ public class Animal {
     @JoinColumn(name="stable_id")
     private Stable stable;
 
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "animals_toys",
+            joinColumns = @JoinColumn(name = "animal_id"),
+            inverseJoinColumns = @JoinColumn(name = "toy_id"))
+    Set<Toy> toys;
+
     public Animal(String name, int age) {
         this.name = name;
         this.age = age;
@@ -38,6 +49,10 @@ public class Animal {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -62,5 +77,24 @@ public class Animal {
 
     public void setStable(Stable stable) {
         this.stable = stable;
+    }
+
+    public Set<Toy> getToys() {
+        return toys;
+    }
+
+    public void setToys(Set<Toy> toys) {
+        this.toys = toys;
+    }
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", stable=" + stable +
+                ", toys=" + toys +
+                '}';
     }
 }

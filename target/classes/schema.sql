@@ -1,5 +1,14 @@
+DROP TABLE IF EXISTS toys;
+DROP TABLE IF EXISTS addresses;
 DROP TABLE IF EXISTS stables;
 DROP TABLE IF EXISTS animals;
+DROP TABLE IF EXISTS animals_toys;
+
+CREATE TABLE toys (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
 
 CREATE TABLE addresses (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -25,5 +34,13 @@ CREATE TABLE animals (
     stable_id BIGINT,
     PRIMARY KEY (id),
     FOREIGN KEY (stable_id) references stables(id)
+);
+
+CREATE TABLE animals_toys (
+    animal_id BIGINT,
+    toy_id BIGINT,
+    PRIMARY KEY (animal_id, toy_id),
+    FOREIGN KEY (animal_id) references animals(id),
+    FOREIGN KEY (toy_id) references toys(id)
 );
 
