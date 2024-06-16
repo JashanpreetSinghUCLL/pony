@@ -89,8 +89,9 @@ public class DbInitializer {
 
         List<Stable> stables = new ArrayList<>(
                 List.of(
-                        new Stable("StblHn", 5),
-                        new Stable("PonyCo Italia", 5)
+                        new Stable("StblHn", 5, "John Doe"),
+                        new Stable("PonyCoItalia", 5, "John Doe"),
+                        new Stable("Pony", 5, "Tory Wilson")
                 )
         );
 

@@ -50,7 +50,7 @@ class AddressServiceTest {
     public void givenStable_whenAddNewStableToNewAddress_thenStableWithAddressIsAdded() {
 
         Address address = new Address("Erenstraat", 23, "Turnhout");
-        Stable stable = new Stable("Sunny's Stable", 5);
+        Stable stable = new Stable("Sunny's Stable", 5, "Desi Owner");
         stable.setAddress(address);
         when(stableRepository.save(stable)).thenReturn(stable);
         when(addressRepository.save(address)).thenReturn(address);
@@ -82,7 +82,7 @@ class AddressServiceTest {
     @Test
     public void givenStableIdWithAlreadyAssignedAddress_whenAddStableToAddress_thenExceptionIsThrown() {
 
-        Stable stable = new Stable("Sunny's Stable", 5);
+        Stable stable = new Stable("Sunny's Stable", 5, "Desi Owner");
         stable.setId(1L);
         Address address = new Address("Erenstraat", 23, "Turnhout");
         address.setId(1L);
@@ -103,7 +103,7 @@ class AddressServiceTest {
     @Test
     public void givenStableIdAndAddressID_whenAddStableToAddress_thenStableToAddressIsAdded() {
 
-        Stable stable = new Stable("Sunny's Stable", 5);
+        Stable stable = new Stable("Sunny's Stable", 5, "Desi Owner");
         stable.setId(1L);
         Address address = new Address("Erenstraat", 23, "Turnhout");
         address.setId(1L);

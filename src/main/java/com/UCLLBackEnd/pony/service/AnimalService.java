@@ -120,4 +120,11 @@ public class AnimalService {
 
         return animalRepository.findAllChickensWhoLaysEggs();
     }
+
+    public List<Animal> getAllAnimalsSleepingInGivenStable(String stableName) {
+        return animalRepository.findAll()
+                .stream()
+                .filter(a -> a.getStable() != null && Objects.equals(a.getStable().getName(), stableName))
+                .collect(Collectors.toList());
+    }
 }

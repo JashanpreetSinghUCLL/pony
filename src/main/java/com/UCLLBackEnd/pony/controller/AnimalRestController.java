@@ -139,6 +139,26 @@ public class AnimalRestController {
         return animalService.getAllChickensWhoLaysEggs();
     }
 
+    @GetMapping("/stable/withPlacesLeft")
+    public List<Stable> getAllStablesWithPlacesLeft() {
+        return stableService.getAllStablesWithPlacesLeft();
+    }
+
+    @GetMapping("/stable/{stable_name}")
+    public List<Animal> getAllAnimalsSleepingInGivenStable(@PathVariable String stable_name) {
+        return animalService.getAllAnimalsSleepingInGivenStable(stable_name);
+    }
+
+    @GetMapping("/stable/withMaxAnimals")
+    public Stable getStableWithTheMostAnimals() {
+        return stableService.getStableWithTheMostAnimals();
+    }
+
+    @GetMapping("/stable/stablesOfOwner/{owner_name}")
+    public List<Stable> getAllStablesOfOwner(@PathVariable String owner_name) {
+        return stableService.getAllStablesOfOwner(owner_name);
+    }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(DomainException.class)
     public Map<String, String> handleDomainExceptions(DomainException domainException) {

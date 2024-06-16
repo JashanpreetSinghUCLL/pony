@@ -40,7 +40,7 @@ class StableServiceTest {
 
         ServiceException ex = assertThrows(ServiceException.class, () -> {
             String animalName = "Lloyd";
-            Stable stable = new Stable("Big Farm", 5);
+            Stable stable = new Stable("Big Farm", 5, "Desi Owner");
             stableService.assignAnimalToNewStable(animalName, stable);
         });
 
@@ -66,7 +66,7 @@ class StableServiceTest {
     public void givenExistingStable_whenAssignAnimalToNewStable_thenThrowException() {
         Animal animal = new Animal("LLoyd", 8);
         when(animalRepository.findByName(animal.getName())).thenReturn(Optional.of(animal));
-        Stable stable = new Stable("Big Farm", 5);
+        Stable stable = new Stable("Big Farm", 5, "Desi Owner");
         when(stableRepository.existsByName(stable.getName())).thenReturn(true);
 
         ServiceException ex = assertThrows(ServiceException.class, () -> {
@@ -81,7 +81,7 @@ class StableServiceTest {
     public void givenStableWith0MaxNumberOfAnimals_whenAssignAnimalToNewStable_thenThrowException() {
         Animal animal = new Animal("LLoyd", 8);
         when(animalRepository.findByName(animal.getName())).thenReturn(Optional.of(animal));
-        Stable stable = new Stable("Big Farm", 0);
+        Stable stable = new Stable("Big Farm", 0, "Desi Owner");
 
         ServiceException ex = assertThrows(ServiceException.class, () -> {
             stableService.assignAnimalToNewStable(animal.getName(), stable);
@@ -95,7 +95,7 @@ class StableServiceTest {
     public void givenValidAnimalAndNewStable_whenAssignAnimalToNewStable_thenAnimalIsAssignedToNewStable() {
         Animal animal = new Animal("LLoyd", 8);
         when(animalRepository.findByName(animal.getName())).thenReturn(Optional.of(animal));
-        Stable stable = new Stable("Big Farm", 5);
+        Stable stable = new Stable("Big Farm", 5, "Desi Owner");
         when(animalRepository.save(any(Animal.class))).thenAnswer(i -> i.getArgument(0));
         when(stableRepository.save(any(Stable.class))).thenAnswer(i -> i.getArgument(0));
 
@@ -109,7 +109,7 @@ class StableServiceTest {
     public void givenNonExistingAnimal_whenAssignAnimalToExistingStable_thenThrowException() {
 
         String animalName = "LLoyd";
-        Stable stable = new Stable("Big Farm", 5);
+        Stable stable = new Stable("Big Farm", 5, "Desi Owner");
         stable.setId(1L);
         when(stableRepository.findById(1L)).thenReturn(Optional.of(stable));
 
@@ -139,7 +139,7 @@ class StableServiceTest {
     @Test
     public void givenMax_number_of_animals_is_0_whenAssignAnimalToExistingStable_thenThrowException() {
 
-        Stable stable = new Stable("Big Farm", 0);
+        Stable stable = new Stable("Big Farm", 0, "Desi Owner");
         stable.setId(1L);
         when(stableRepository.findById(1L)).thenReturn(Optional.of(stable));
         Animal animal = new Animal("LLoyd", 8);
@@ -156,7 +156,7 @@ class StableServiceTest {
     @Test
     public void givenAnimalToAssignAndStableIsMaxedOut_whenAssignAnimalToExistingStable_thenThrowException() {
 
-        Stable stable = new Stable("Big Farm", 1);
+        Stable stable = new Stable("Big Farm", 1, "Desi Owner");
         stable.setId(1L);
         when(stableRepository.findById(1L)).thenReturn(Optional.of(stable));
 
@@ -180,7 +180,7 @@ class StableServiceTest {
     @Test
     public void givenAnimalAndExistingStable_whenAssignAnimalToExistingStable_thenAnimalIsAssignedToExistingStable() {
 
-        Stable stable = new Stable("Big Farm", 1);
+        Stable stable = new Stable("Big Farm", 1, "Desi Owner");
         stable.setId(1L);
         when(stableRepository.findById(1L)).thenReturn(Optional.of(stable));
 
@@ -203,11 +203,11 @@ class StableServiceTest {
         Animal animal1 = new Animal("Lloyd", 8);
         Animal animal2 = new Animal("Fred", 10);
 
-        Stable stable1 = new Stable("Big Farm", 5);
+        Stable stable1 = new Stable("Big Farm", 5, "Desi Owner");
         stable1.setId(1L);
         stable1.setAnimals(Collections.singleton(animal1));
 
-        Stable stable2 = new Stable("Small Farm", 3);
+        Stable stable2 = new Stable("Small Farm", 3, "Desi Owner");
         stable2.setId(2L);
         stable2.setAnimals(Collections.singleton(animal2));
 
@@ -238,7 +238,7 @@ class StableServiceTest {
     @Test
     public void givenValidAnimal_whenGetStablesOfAnimal_thenStableOfAnimalIsReturned() {
 
-        Stable stable = new Stable("Big Farm", 5);
+        Stable stable = new Stable("Big Farm", 5, "Desi Owner");
         stable.setId(1L);
 
         Animal animal = new Animal("Lloyd", 8);

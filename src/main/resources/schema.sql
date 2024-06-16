@@ -23,6 +23,7 @@ CREATE TABLE stables (
     id BIGINT NOT NULL AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     max_number_of_animals INT NOT NULL,
+    owner VARCHAR(255) NOT NULL,
     address_id BIGINT,
     PRIMARY KEY (id),
     FOREIGN KEY (address_id) REFERENCES addresses(id)

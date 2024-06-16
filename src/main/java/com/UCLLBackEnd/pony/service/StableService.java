@@ -7,9 +7,11 @@ import com.UCLLBackEnd.pony.repository.StableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class StableService {
@@ -84,5 +86,27 @@ public class StableService {
                 .orElseThrow(() -> new ServiceException("ServiceException", "The given animal doesn't exists"));
 
         return animal.getStable();
+    }
+
+
+    public List<Stable> getAllStablesWithPlacesLeft() {
+
+        return stableRepository.findAll()
+                .stream()
+                .filter(s -> s.getAnimals().size() < s.getMax_number_of_animals())
+                .collect(Collectors.toList());
+    }
+
+    public Stable getStableWithTheMostAnimals() {
+
+        return stableRepository.findAll()
+                .stream()
+                .max(Comparator.comparing(stable -> stable.getAnimals().size()))
+                .orElseThrow(() -> new ServiceException("ServiceException", "No stable with animals sleeping in them found"));
+
+    }
+
+    public List<Stable> getAllStablesOfOwner(String ownerName) {
+        return stableRepository.findAllStablesOfOwner(ownerName);
     }
 }

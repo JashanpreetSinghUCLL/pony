@@ -30,9 +30,13 @@ public class Stable {
     @JoinColumn(name = "address_id")
     private Address address;
 
-    public Stable(String name, int max_number_of_animals) {
+    @NotEmpty(message = "The owner must be given")
+    private String owner;
+
+    public Stable(String name, int max_number_of_animals, String owner) {
         this.name = name;
         this.max_number_of_animals = max_number_of_animals;
+        this.owner = owner;
     }
 
     public Stable() {
@@ -61,6 +65,14 @@ public class Stable {
 
     public void setMax_number_of_animals(int max_number_of_animals) {
         this.max_number_of_animals = max_number_of_animals;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     public Set<Animal> getAnimals() {

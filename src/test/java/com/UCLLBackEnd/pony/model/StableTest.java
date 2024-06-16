@@ -32,7 +32,7 @@ class StableTest {
     @Test
     public void givenNoName_whenCreatingStable_thenThrowsException() {
 
-        Stable stable = new Stable("", 5);
+        Stable stable = new Stable("", 5, "Desi Owner");
 
         Set<ConstraintViolation<Stable>> violations = validator.validate(stable);
         assertFalse(violations.isEmpty());
@@ -44,7 +44,7 @@ class StableTest {
     @Test
     public void givenInvalidAge_whenCreatingStable_thenThrowsException() {
 
-        Stable stable = new Stable("Farm Frenzy", -1);
+        Stable stable = new Stable("Farm Frenzy", -1, "Desi Owner");
 
         Set<ConstraintViolation<Stable>> violations = validator.validate(stable);
         assertFalse(violations.isEmpty());
@@ -55,7 +55,7 @@ class StableTest {
     @Test
     public void givenValidStable_whenCreatingStable_thenStableIsCreated() {
 
-        Stable stable = new Stable("Farm Frenzy", 5);
+        Stable stable = new Stable("Farm Frenzy", 5, "Desi Owner");
 
         assertEquals("Farm Frenzy", stable.getName());
         assertEquals(5, stable.getMax_number_of_animals());
