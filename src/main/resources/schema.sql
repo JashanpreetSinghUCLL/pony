@@ -30,8 +30,10 @@ CREATE TABLE stables (
 
 CREATE TABLE animals (
     id BIGINT NOT NULL AUTO_INCREMENT,
+    animal_type VARCHAR(255),
     name VARCHAR(255) NOT NULL,
     age INT NOT NULL,
+    lays_eggs BOOLEAN DEFAULT FALSE,
     stable_id BIGINT,
     PRIMARY KEY (id),
     FOREIGN KEY (stable_id) references stables(id)

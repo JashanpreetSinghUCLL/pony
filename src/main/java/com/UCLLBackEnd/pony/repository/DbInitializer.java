@@ -106,13 +106,13 @@ public class DbInitializer {
 
         List<Animal> animals = new ArrayList<>(
                 List.of(
-                        new Animal("Bella", 20),
-                        new Animal("Luna", 10),
-                        new Animal("Muriel", 2),
-                        new Animal("Little", 1),
-                        new Animal("Breda", 32),
-                        new Animal("Deby", 13),
-                        new Animal("Henry", 32)
+                        new Pony("Bella", 20),
+                        new Pony("Luna", 10),
+                        new Chicken("Muriel", 2, true),
+                        new Chicken("Little", 1, false),
+                        new Pony("Breda", 32),
+                        new Pony("Deby", 13),
+                        new Chicken("Henry", 32, true)
                 )
         );
 

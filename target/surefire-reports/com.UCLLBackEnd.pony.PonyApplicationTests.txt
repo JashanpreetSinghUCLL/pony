@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.UCLLBackEnd.pony.PonyApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.40 s -- in com.UCLLBackEnd.pony.PonyApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.12 s -- in com.UCLLBackEnd.pony.PonyApplicationTests

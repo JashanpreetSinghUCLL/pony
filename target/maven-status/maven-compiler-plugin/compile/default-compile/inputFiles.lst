@@ -3,8 +3,10 @@
 /Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/main/java/com/UCLLBackEnd/pony/controller/AnimalRestController.java
 /Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/main/java/com/UCLLBackEnd/pony/model/Address.java
 /Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/main/java/com/UCLLBackEnd/pony/model/Animal.java
+/Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/main/java/com/UCLLBackEnd/pony/model/Chicken.java
 /Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/main/java/com/UCLLBackEnd/pony/model/DomainException.java
 /Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/main/java/com/UCLLBackEnd/pony/model/MedicalRecord.java
+/Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/main/java/com/UCLLBackEnd/pony/model/Pony.java
 /Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/main/java/com/UCLLBackEnd/pony/model/Stable.java
 /Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/main/java/com/UCLLBackEnd/pony/model/Toy.java
 /Users/jashanpreetsingh/Downloads/backend_exams_prep/pony/src/main/java/com/UCLLBackEnd/pony/repository/AddressRepository.java

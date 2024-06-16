@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.UCLLBackEnd.pony.service.AnimalServiceTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.906 s -- in com.UCLLBackEnd.pony.service.AnimalServiceTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.941 s -- in com.UCLLBackEnd.pony.service.AnimalServiceTest

@@ -12,6 +12,8 @@ import java.util.Set;
 
 @Entity
 @Table(name="animals")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "animal_type")
 public class Animal {
 
     @Id
@@ -22,7 +24,7 @@ public class Animal {
     @Column(unique = true)
     private String name;
 
-    @Min(value = 1, message = "Minimum age is 1")
+    @Min(value = 0, message = "Minimum age is 0")
     @Max(value = 50, message = "Maximum age is 50")
     private int age;
 
@@ -48,9 +50,13 @@ public class Animal {
         this.age = age;
     }
 
+    public Animal(String name) {
+    }
+
     public Animal() {
 
     }
+
 
     public long getId() {
         return id;
@@ -98,6 +104,13 @@ public class Animal {
 
     public void setMedicalRecords(Set<MedicalRecord> medicalRecords) {
         this.medicalRecords = medicalRecords;
+    }
+
+    @Column(insertable = false, updatable = false)
+    private String animal_type;
+
+    public String getAnimal_type() {
+        return animal_type;
     }
 
     @Override

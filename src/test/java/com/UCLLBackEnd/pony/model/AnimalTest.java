@@ -45,13 +45,13 @@ class AnimalTest {
     @Test
     public void givenUnderAge_whenCreateAnimal_thenThrowsException() {
 
-        Animal animal = new Animal("Rambo", 0);
+        Animal animal = new Animal("Rambo", -1);
 
         Set<ConstraintViolation<Animal>> violations = validator.validate(animal);
 
         assertFalse(violations.isEmpty());
         String message = violations.iterator().next().getMessage();
-        assertEquals("Minimum age is 1", message);
+        assertEquals("Minimum age is 0", message);
     }
 
 

@@ -1,7 +1,9 @@
 package com.UCLLBackEnd.pony.service;
 
 import com.UCLLBackEnd.pony.model.Animal;
+import com.UCLLBackEnd.pony.model.Chicken;
 import com.UCLLBackEnd.pony.model.MedicalRecord;
+import com.UCLLBackEnd.pony.model.Pony;
 import com.UCLLBackEnd.pony.repository.AnimalRepository;
 import com.UCLLBackEnd.pony.repository.MedicalRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -74,5 +77,47 @@ public class AnimalService {
                 .filter(a -> a.getMedicalRecords().stream()
                 .anyMatch(medicalRecord -> medicalRecord.getClosingDate() == null))
                 .collect(Collectors.toList());
+    }
+
+    public Pony addPony(Pony pony) {
+
+        return animalRepository.save(pony);
+    }
+
+    public Chicken addChicken(Chicken chicken) {
+
+        return animalRepository.save(chicken);
+    }
+
+    public List<Animal> getAllChickens() {
+        return animalRepository.findAll()
+                .stream()
+                .filter(a -> Objects.equals(a.getAnimal_type(), "CHICKEN"))
+                .collect(Collectors.toList());
+    }
+
+    public List<Animal> getAllPonies() {
+        return animalRepository.findAll()
+                .stream()
+                .filter(a -> Objects.equals(a.getAnimal_type(), "PONY"))
+                .collect(Collectors.toList());
+    }
+
+    public List<Animal> getPoniesOlderThanGivenAge(int age) {
+
+        if (age < 0 || age > 50) {
+            throw new ServiceException("ServiceException", "Age must be between 1 and 50");
+        }
+
+        return animalRepository.findByAgeGreaterThan(age)
+                .stream()
+                .filter(a -> Objects.equals(a.getAnimal_type(), "PONY"))
+                .collect(Collectors.toList());
+
+    }
+
+    public List<Animal> getAllChickensWhoLaysEggs() {
+
+        return animalRepository.findAllChickensWhoLaysEggs();
     }
 }

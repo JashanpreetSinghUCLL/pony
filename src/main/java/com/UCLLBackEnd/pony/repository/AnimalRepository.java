@@ -20,4 +20,7 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
 
     @Query("SELECT a FROM Animal a WHERE a.id = :stableId")
     List<Animal> findByStableWithId(@Param("stableId") Long stableId);
+
+    @Query("SELECT c FROM Chicken c WHERE c.laysEggs = true")
+    List<Animal> findAllChickensWhoLaysEggs();
 }

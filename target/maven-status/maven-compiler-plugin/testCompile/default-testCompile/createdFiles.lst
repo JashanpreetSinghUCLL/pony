@@ -1,0 +1,10 @@
+com/UCLLBackEnd/pony/model/StableTest.class
+com/UCLLBackEnd/pony/PonyApplicationTests.class
+com/UCLLBackEnd/pony/service/AddressServiceTest.class
+com/UCLLBackEnd/pony/service/StableServiceTest.class
+com/UCLLBackEnd/pony/model/AddressTest.class
+com/UCLLBackEnd/pony/service/MedicalRecordServiceTest.class
+com/UCLLBackEnd/pony/model/AnimalTest.class
+com/UCLLBackEnd/pony/service/AnimalServiceTest.class
+com/UCLLBackEnd/pony/model/MedicalRecordTest.class
+com/UCLLBackEnd/pony/service/ToyServiceTest.class

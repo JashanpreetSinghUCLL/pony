@@ -109,6 +109,36 @@ public class AnimalRestController {
         return medicalRecordService.getMedicalRecordsAfterGivenRegistrationDate(animalName, registrationDate);
     }
 
+    @PostMapping("/pony")
+    public Pony addNewPonyAnimal(@Valid @RequestBody Pony pony) {
+        return animalService.addPony(pony);
+    }
+
+    @PostMapping("/chicken")
+    public Chicken addNewChickenAnimal(@Valid @RequestBody Chicken chicken) {
+        return animalService.addChicken(chicken);
+    }
+
+    @GetMapping("/chicken")
+    public List<Animal> getAllChickens() {
+        return animalService.getAllChickens();
+    }
+
+    @GetMapping("/pony")
+    public List<Animal> getAllPonies() {
+        return animalService.getAllPonies();
+    }
+
+    @GetMapping("/pony/age/{age}")
+    public List<Animal> getPoniesOlderThanGivenAge(@PathVariable int age) {
+        return animalService.getPoniesOlderThanGivenAge(age);
+    }
+
+    @GetMapping("/chicken/laysEggs")
+    public List<Animal> getAllChickensWhoLaysEggs() {
+        return animalService.getAllChickensWhoLaysEggs();
+    }
+
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(DomainException.class)
     public Map<String, String> handleDomainExceptions(DomainException domainException) {
