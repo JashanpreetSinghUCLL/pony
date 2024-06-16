@@ -1,13 +1,7 @@
 package com.UCLLBackEnd.pony.controller;
 
-import com.UCLLBackEnd.pony.model.Animal;
-import com.UCLLBackEnd.pony.model.DomainException;
-import com.UCLLBackEnd.pony.model.Stable;
-import com.UCLLBackEnd.pony.model.Toy;
-import com.UCLLBackEnd.pony.service.AnimalService;
-import com.UCLLBackEnd.pony.service.ServiceException;
-import com.UCLLBackEnd.pony.service.StableService;
-import com.UCLLBackEnd.pony.service.ToyService;
+import com.UCLLBackEnd.pony.model.*;
+import com.UCLLBackEnd.pony.service.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +9,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,15 +19,19 @@ import java.util.Map;
 public class AnimalRestController {
 
     private ToyService toyService;
+
     private AnimalService animalService;
 
     private StableService stableService;
 
+    private MedicalRecordService medicalRecordService;
+
     @Autowired
-    public AnimalRestController(AnimalService animalService, StableService stableService, ToyService toyService) {
+    public AnimalRestController(AnimalService animalService, StableService stableService, ToyService toyService, MedicalRecordService medicalRecordService) {
         this.animalService = animalService;
         this.stableService = stableService;
         this.toyService = toyService;
+        this.medicalRecordService = medicalRecordService;
     }
 
     @PostMapping
@@ -90,7 +89,25 @@ public class AnimalRestController {
         return toyService.getToyWithSpecificName(toyName);
     }
 
+    @PostMapping("/{animal_id}/medicalRecord")
+    public Animal postNewMedicalRecordToExistingAnimal(@PathVariable Long animal_id, @Valid @RequestBody MedicalRecord medicalRecord) {
+        return animalService.addNewMedicalRecordToExistingAnimal(animal_id, medicalRecord);
+    }
 
+    @PutMapping("/{animal_id}/medicalRecord/{medicalRecord_id}/closingDate/{date}")
+    public MedicalRecord putClosingDateToExistingMedicalRecordWithExistingAnimal(@PathVariable Long animal_id, @PathVariable Long medicalRecord_id, @PathVariable LocalDate date) {
+        return medicalRecordService.addClosingDateToExistingMedicalRecordWithExistingAnimal(animal_id, medicalRecord_id, date);
+    }
+
+    @GetMapping("/withOutClosingDate")
+    public List<Animal> getAnimalWithOutClosingDate() {
+        return animalService.getAnimalWithOutClosingDate();
+    }
+
+    @GetMapping("{animalName}/medicalRecordsAfterDate/{registrationDate}")
+    public List<MedicalRecord> getMedicalRecordsAfterDate(@PathVariable String animalName, @PathVariable LocalDate registrationDate) {
+        return medicalRecordService.getMedicalRecordsAfterGivenRegistrationDate(animalName, registrationDate);
+    }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(DomainException.class)

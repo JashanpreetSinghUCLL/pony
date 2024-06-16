@@ -2,6 +2,7 @@ package com.UCLLBackEnd.pony.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -37,6 +38,10 @@ public class Animal {
             joinColumns = @JoinColumn(name = "animal_id"),
             inverseJoinColumns = @JoinColumn(name = "toy_id"))
     Set<Toy> toys;
+
+    @JsonManagedReference
+    @OneToMany(mappedBy = "animal")
+    private Set<MedicalRecord> medicalRecords;
 
     public Animal(String name, int age) {
         this.name = name;
@@ -85,6 +90,14 @@ public class Animal {
 
     public void setToys(Set<Toy> toys) {
         this.toys = toys;
+    }
+
+    public Set<MedicalRecord> getMedicalRecords() {
+        return medicalRecords;
+    }
+
+    public void setMedicalRecords(Set<MedicalRecord> medicalRecords) {
+        this.medicalRecords = medicalRecords;
     }
 
     @Override

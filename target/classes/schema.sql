@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS addresses;
 DROP TABLE IF EXISTS stables;
 DROP TABLE IF EXISTS animals;
 DROP TABLE IF EXISTS animals_toys;
+DROP TABLE IF EXISTS medical_records;
 
 CREATE TABLE toys (
     id BIGINT NOT NULL AUTO_INCREMENT,
@@ -42,5 +43,15 @@ CREATE TABLE animals_toys (
     PRIMARY KEY (animal_id, toy_id),
     FOREIGN KEY (animal_id) references animals(id),
     FOREIGN KEY (toy_id) references toys(id)
+);
+
+CREATE TABLE medical_records (
+    id BIGINT NOT NULL AUTO_INCREMENT,
+    registrationDate DATE NOT NULL,
+    closingDate DATE,
+    description VARCHAR(1000) NOT NULL,
+    animal_id BIGINT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (animal_id) REFERENCES animals(id)
 );
 

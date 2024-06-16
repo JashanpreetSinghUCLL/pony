@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.UCLLBackEnd.pony.service.AddressServiceTest" time="0.287" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.UCLLBackEnd.pony.model.MedicalRecordTest" time="0.016" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -64,10 +64,8 @@
     <property name="java.class.version" value="65.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[pony] "/>
   </properties>
-  <testcase name="givenAddress_whenAddAddress_thenAddressIsAdded" classname="com.UCLLBackEnd.pony.service.AddressServiceTest" time="0.18"/>
-  <testcase name="givenStableIdWithAlreadyAssignedAddress_whenAddStableToAddress_thenExceptionIsThrown" classname="com.UCLLBackEnd.pony.service.AddressServiceTest" time="0.027"/>
-  <testcase name="getAddressesOfStableWithMoreThan3Animals_thenAddressesAreReturned" classname="com.UCLLBackEnd.pony.service.AddressServiceTest" time="0.012"/>
-  <testcase name="givenStable_whenAddNewStableToNewAddress_thenStableWithAddressIsAdded" classname="com.UCLLBackEnd.pony.service.AddressServiceTest" time="0.009"/>
-  <testcase name="givenNonExistingStableId_whenAddStableToAddress_thenExceptionIsThrown" classname="com.UCLLBackEnd.pony.service.AddressServiceTest" time="0.018"/>
-  <testcase name="givenStableIdAndAddressID_whenAddStableToAddress_thenStableToAddressIsAdded" classname="com.UCLLBackEnd.pony.service.AddressServiceTest" time="0.009"/>
+  <testcase name="givenValidMedicalRecord_whenCreatingMedicalRecord_thenMedicalRecordIsCreated" classname="com.UCLLBackEnd.pony.model.MedicalRecordTest" time="0.001"/>
+  <testcase name="givenInvalidClosingDate_whenSettingClosingDateToMedicalRecord_thenExceptionIsThrown" classname="com.UCLLBackEnd.pony.model.MedicalRecordTest" time="0.001"/>
+  <testcase name="givenRegistrationNotEmpty_whenCreatingMedicalRecord_thenExceptionIsThrown" classname="com.UCLLBackEnd.pony.model.MedicalRecordTest" time="0.008"/>
+  <testcase name="givenRegistrationDateInFuture_whenCreatingMedicalRecord_thenExceptionIsThrown" classname="com.UCLLBackEnd.pony.model.MedicalRecordTest" time="0.001"/>
 </testsuite>
